@@ -54,7 +54,6 @@ Date.monthNames = ['January','February','March','April','May','June', 'July','Au
         b: function () {
             return Date.monthNamesShort[this.getMonth()];
         },
-        c: proto.toString,
         C: function() {
             return strpad(this.getFullYear()/100);
         },
@@ -65,9 +64,6 @@ Date.monthNames = ['January','February','March','April','May','June', 'July','Au
         e: function () {
             return strpad(this.getDate(), 2, ' ');
         },
-        g: function() {
-            return strpad(parseInt(formatters.G.call(this) % 100, 10));
-        },
         G: function () {
             var y = this.getFullYear();
             var V = parseInt(formatters.V.call(this), 10);
@@ -75,6 +71,9 @@ Date.monthNames = ['January','February','March','April','May','June', 'July','Au
             y -= W === 0 && V >= 52;
             y += W > V;
             return y;
+        },
+        g: function() {
+            return strpad(parseInt(formatters.G.call(this) % 100, 10));
         },
         H: function () {
             return strpad(this.getHours());
